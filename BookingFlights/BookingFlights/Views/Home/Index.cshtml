@@ -3,6 +3,16 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @using(Html.BeginForm("Index","FlightsUser",FormMethod.Get))
+    {
+   <b>Departure City:</b> 
+   @Html.TextBox("DepartureCity")
+   <br />
+   <b>Arrival City:</b> 
+   @Html.TextBox("ArrivalCity")
+   <br />
+   <b>Date:</b>
+    <input type="date" id="DepartureDate" name="DepartureDate">
+    <input type="submit" value="Search Flights" />
+    }
 </div>

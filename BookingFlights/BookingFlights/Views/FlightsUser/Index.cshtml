@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BookingFlights.DataModel.Flight>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All flights available for the trip selected </h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Number of the plane
+            </th>
+            <th>
+               Departure
+            </th>
+            <th>
+                Arrival
+            </th>
+            <th>
+                Departure time
+            </th>
+            <th>
+               Arrival time
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalCity)
+            </td>
+            <td>
+               @Convert.ToString(string.Format("{0:hh:mm tt}", item.departureDate))
+            </td>
+            <td>
+                 @Convert.ToString(string.Format("{0:hh:mm tt}", item.arrivalDate))
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

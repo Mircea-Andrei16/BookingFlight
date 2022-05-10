@@ -1,4 +1,6 @@
+using BookingFlights.Abstractions.Repository;
 using BookingFlights.Data;
+using BookingFlights.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,11 +31,20 @@ namespace BookingFlights
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
+                    Configuration.GetConnectionString("IdentityConnection")));
+
+            services.AddDbContext<BookingFlightsDbContext>(options =>
+                options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddScoped<IFlightsRepository, FlightRepository>();
+            services.AddScoped<IPassengersRepository, PassengerRepository>();
+
             services.AddControllersWithViews();
         }
 
