@@ -69,7 +69,7 @@ namespace BookingFlights.UnitTests
             }
         }
 
-        [TestMethod]
+       // [TestMethod]
         public void deleteBookingFlight()
         {
             FlightService flightService = init();

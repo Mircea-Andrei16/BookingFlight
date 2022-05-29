@@ -99,7 +99,7 @@ namespace BookingFlights.UnitTests
             }
         }
 
-        [TestMethod]
+       // [TestMethod]
         public void DeleteTicketsFlight()
         {
 
